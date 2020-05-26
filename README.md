@@ -1,2 +1,15 @@
-# hw01_UR5_coppeliaSim
-Implement the inverse kinematics of a UR5 employing the Poduct of Exponentials approach and control the UR5 in coppeliaSim using Python.
+# Inverse Kinematics UR5
+Author: Isaac Ayala
+
+## Description
+
+A Python implementation of the inverse kinematics of the UR5 is presented.
+
+## Requirements
+
+## Results
+
+## References 
+
++ [Denavit-Hartenberg parameters for the UR5](https://www.universal-robots.com/articles/ur-articles/parameters-for-calculations-of-kinematics-and-dynamics/)
++ [Modern Robotics](http://hades.mech.northwestern.edu/index.php/Modern_Robotics)
