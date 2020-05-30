@@ -226,7 +226,7 @@ def compute_jacobian(theta, screw, dof=6 ):
             ]
         )
 
-    print('Kinematic : \n', B)
+    # print('Kinematic : \n', B)
 
     # Get Analytic Jacobian
     """
@@ -260,9 +260,8 @@ def root_finding(theta_0, theta_d, tryMax, dof, home_position, screw):
     n_try = 1; # Count number of iterations
     tol = 0.0001; # error tolerance
     theta = theta_0
-    e = compute_e(theta_d, theta, dof, home_position, screw)
+    e = compute_e(theta_d, theta, dof, home_position, screw) # Gets error from the transformation matrix
 
-    # while n_try < tryMax and np.abs(e.min()) > tol :
     while n_try < tryMax and np.linalg.norm(e) > tol :
         ja = compute_jacobian(theta, screw)
         j_temp = np.zeros((6,6))
@@ -271,7 +270,6 @@ def root_finding(theta_0, theta_d, tryMax, dof, home_position, screw):
                 j_temp[i][j] = ja[i][j]
 
         inverse_jacobian = np.linalg.inv(j_temp)
-        # theta = theta + inverse_jacobian @ e
         theta = theta + inverse_jacobian @ (theta_d - theta)
         e = compute_e(theta_d, theta, dof, home_position, screw)
         n_try += 1
@@ -330,7 +328,8 @@ def main():
     r_pitch = m.atan2(-R[2][0],m.sqrt(R[2][2]*R[2][2] + R[2][1]*R[2][1]))
     r_yaw = m.atan2(R[1][0],R[0][0])
 
-    # Begin connection with coppeliaSim. Robot simulation must be running in coppeliaSim to connect
+    # Begin connection with coppeliaSim.
+    # Robot simulation must be running in coppeliaSim to connect
     sim.simxFinish(-1) # just in case, close all opened connections
     clientID=sim.simxStart('127.0.0.1',19997,True,True,5000,5) # Connect to CoppeliaSim
 
@@ -395,7 +394,7 @@ def main():
 
     print('\n Robot coordinates: \n ', T_ur5 )
 
-    print('\n Absolute Error : \n', abs(T_theta - T_ur5))
+    # print('\n Absolute Error : \n', abs(T_theta - T_ur5))
 
     time.sleep(1)
 
