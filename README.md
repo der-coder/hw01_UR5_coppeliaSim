@@ -7,7 +7,7 @@ A Python implementation of the inverse kinematics of the UR5 is presented.
 
 `ik_ur5.py` : Main script to execute. Gets the parameters for the UR5 and solves the inverse kinematics of the system for the position written in the code. Connects to CoppeliaSim and sets the new target location. Returns the final position of the robot's end effector.
 
-`sim.py`, `simCost,py` `remoteApi.dll`, `remoteApi.so`:  CoppeliaSim libraries to connect with Python.
+`sim.py`, `simConst.py` `remoteApi.dll`, `remoteApi.so`:  CoppeliaSim libraries to connect with Python.
 
 `UR5_DH.ttr` : CoppeliaSim robot scene for the DH parameters. Use this scene for simulations.
 
